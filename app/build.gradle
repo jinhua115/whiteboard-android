@@ -34,6 +34,7 @@ android {
 
 dependencies {
     implementation project(':sdk')
+    // implementation 'com.github.netless-io:whiteboard-android:2.12.26'
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
@@ -58,4 +59,6 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.2.0'
     androidTestImplementation "androidx.test:runner:${rootProject.testRunnerVersion}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.espressoVersion}"
+
+    implementation "org.java-websocket:Java-WebSocket:1.5.1"
 }

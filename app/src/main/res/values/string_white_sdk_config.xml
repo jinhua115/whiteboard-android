@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 配置sdk app 参数-->
-    <string name="sdk_app_id">""</string>
-    <string name="sdk_app_token">""</string>
-    <!-- 配置有效room参数方便测试 -->
-    <string name="room_uuid">""</string>
-    <string name="room_token">""</string>
+<!--    &lt;!&ndash; 配置sdk app 参数&ndash;&gt;-->
+<!--    <string name="sdk_app_id">"283/VGiScM9Wiw2HJg"</string>-->
+<!--    <string name="sdk_app_token">""</string>-->
+<!--    &lt;!&ndash; 配置有效room参数方便测试 &ndash;&gt;-->
+<!--    <string name="room_uuid">"1328f1d0bec411eb8b19c12fcd306398"</string>-->
+<!--    <string name="room_token">"NETLESSROOM_YWs9M2R5WmdQcFlLcFlTdlQ1ZjRkOFBiNjNnY1RoZ3BDSDlwQXk3Jm5vbmNlPTE2MjIxNzA5MzY2NDAwMCZyb2xlPTImc2lnPTRjMDY4NWNhNDBiYmNiYzdkYWIwMTU2Njc4ZmU1MjBmYWE3ZDE0Nzc0MmU0NmU0ZWY4YWM1YWE2ZmUwYzVlYTEmdXVpZD0xMzI4ZjFkMGJlYzQxMWViOGIxOWMxMmZjZDMwNjM5OA"</string>-->
+    <string name="sdk_app_id">792/uaYcRG0I7ctP9A</string>
+    <string name="sdk_app_token">WHITEcGFydG5lcl9pZD1OZ3pwQWNBdlhiemJERW9NY0E0Z0V3RTUwbVZxM0NIbDJYV0Ymc2lnPWNiZWExOTMwNzc1NmQyNmU3N2U3M2Q0NWZjNTZiOGIwMWE2ZjU4NDI6YWRtaW5JZD0yMTYmcm9sZT1hZG1pbiZleHBpcmVfdGltZT0xNTg5ODMzNTQxJmFrPU5nenBBY0F2WGJ6YkRFb01jQTRnRXdFNTBtVnEzQ0hsMlhXRiZjcmVhdGVfdGltZT0xNTU4Mjc2NTg5Jm5vbmNlPTE1NTgyNzY1ODg4NDQwMA</string>
+<!--    <string name="room_uuid">5ecda530c9d311eb8c3c6d60a9478041</string>-->
+<!--    <string name="room_token">"NETLESSROOM_YWs9M2R5WmdQcFlLcFlTdlQ1ZjRkOFBiNjNnY1RoZ3BDSDlwQXk3Jm5vbmNlPTE2MjMzMTk1MjQ0MzQwMCZyb2xlPTAmc2lnPTMyYWVkM2JlODQ3M2E0OTY4MGQwZjUyNDVkYmNkMzBhOGJlNDQ5YzFkZDk0MjFmYzE0ZTU5N2QzOGExZGY2OTEmdXVpZD01ZWNkYTUzMGM5ZDMxMWViOGMzYzZkNjBhOTQ3ODA0MQ"</string>-->
+
+<!--&lt;!&ndash; image &ndash;&gt;-->
+<!--    <string name="room_uuid">c942f580c99911ebb2d30f1fca99deaa</string>-->
+<!--    <string name="room_token">"NETLESSROOM_YWs9M2R5WmdQcFlLcFlTdlQ1ZjRkOFBiNjNnY1RoZ3BDSDlwQXk3Jm5vbmNlPTE2MjMyOTQ3OTE1NTUwMCZyb2xlPTAmc2lnPWE1ZmM5ZTVmMTZmMTEwOWFkMTJlNDZmN2ExZDlhNGMxZDk0YWNmYjg1YzRmOTgzNDJiOWI0ZjMxNmM5YTdiNjEmdXVpZD1jOTQyZjU4MGM5OTkxMWViYjJkMzBmMWZjYTk5ZGVhYQ"</string>-->
+
+    <!-- h5 2 -->
+    <string name="room_uuid">a37f7410c9d811ebb2d30f1fca99deaa</string>
+    <string name="room_token">"NETLESSROOM_YWs9M2R5WmdQcFlLcFlTdlQ1ZjRkOFBiNjNnY1RoZ3BDSDlwQXk3Jm5vbmNlPTE2MjMzMjE3ODcwNjgwMCZyb2xlPTAmc2lnPWM3NjZkNzBiODU0OGE1MjU2MzljOWRiNWUxZGNlM2Q5MWEwZWFmYTY1ZDY0YzljMzA2NDU3NGNmNDY2MWZjM2QmdXVpZD1hMzdmNzQxMGM5ZDgxMWViYjJkMzBmMWZjYTk5ZGVhYQ"</string>
+
+
+<!--        <string name="room_uuid">df4b5bd0c9ba11eba5e2d1a27b21896e</string>-->
+<!--    <string name="room_token">"NETLESSROOM_YWs9M2R5WmdQcFlLcFlTdlQ1ZjRkOFBiNjNnY1RoZ3BDSDlwQXk3Jm5vbmNlPTE2MjMzMDkwMDI0NDEwMCZyb2xlPTAmc2lnPTYwNzhiNGUyZjgwNTZkZWIxNmU0OTM2YjQ1OTQ5OWExMGMxODQ2OTEyNjc4ODAxN2ExNDYxNDNhZmE1N2VmZmEmdXVpZD1kZjRiNWJkMGM5YmExMWViYTVlMmQxYTI3YjIxODk2ZQ"</string>-->
+
 </resources>
