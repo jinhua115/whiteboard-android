@@ -65,7 +65,7 @@ public class WebSocketTestActivity extends AppCompatActivity {
 
     private void onConnect(View view) {
         try {
-            client = new WebSocketClient(new URI("ws://121.196.198.83/site/change")) {
+            client = new WebSocketClient(new URI("wss://echo.websocket.org")) {
                 @Override
                 public void onOpen(ServerHandshake handshakedata) {
                     appendLog("onOpen handshakedata" + handshakedata);

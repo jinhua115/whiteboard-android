@@ -13,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.VisibleForTesting;
+
 import com.alibaba.sdk.android.httpdns.HttpDns;
 import com.alibaba.sdk.android.httpdns.HttpDnsService;
 import com.google.gson.Gson;
@@ -41,6 +43,7 @@ import com.herewhite.sdk.domain.ConversionInfo;
 import com.herewhite.sdk.domain.ConvertException;
 import com.herewhite.sdk.domain.ConvertedFiles;
 import com.herewhite.sdk.domain.FontFace;
+import com.herewhite.sdk.domain.FpaParams;
 import com.herewhite.sdk.domain.GlobalState;
 import com.herewhite.sdk.domain.ImageInformationWithUrl;
 import com.herewhite.sdk.domain.MemberState;
@@ -62,7 +65,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 
-import androidx.annotation.VisibleForTesting;
 import wendu.dsbridge.DWebView;
 
 
@@ -182,6 +184,12 @@ public class RoomActivity extends BaseActivity {
         configuration.setUserCursor(true);
         //动态 ppt 需要的自定义字体，如果没有使用，无需调用
         configuration.setFonts(new MapBuilder<String, String>().put("宋体", "https://your-cdn.com/Songti.ttf").build());
+        // 设置全链路加速
+        configuration.setFpaParams(new FpaParams(
+                "7e8224ffaec64a2dac57b5d3e25f3953",
+                "007eJxTYOjr4TnXeWMZ2xHrjj1v5HczpwtcWHF8QZmtxKpr22q0ytgVGMxTLYyMTNLSElOTzUwSjVISk03Nk0xTjFONTNOMLU2NpZ2uJjjUsTL81ixhZWZgBEMQH6gzxdzI2Mw0NcnSwtjEwtTY0jzVONU4zTLFxMwgKSUlkYvByMLCyNjE0MjcmAmuD1mUhYGBAQD8ISth",
+                370
+        ));
 
         mWhiteSdk = new WhiteSdk(mWhiteboardView, this, configuration);
 
