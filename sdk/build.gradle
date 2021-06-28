@@ -36,11 +36,11 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.aderan:NativeSocket:0.0.2'
-
     implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.9'
     api 'com.github.wendux:DSBridge-Android:ac150b630b'
+    implementation project(':rtns')
+    // implementation 'com.github.aderan:NativeSocket:0.0.2'
 
     testImplementation 'org.json:json:20180130'
     testImplementation "junit:junit:${rootProject.jUnitVersion}"

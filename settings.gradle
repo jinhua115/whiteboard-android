@@ -1,1 +1,4 @@
 include ':app', ':rtc', ':sdk'
+include ':rtns'
+
+project(":rtns").projectDir=new File("/Users/fenglibin/Agora/NativeSocket/rtns/")

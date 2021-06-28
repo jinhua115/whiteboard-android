@@ -11,11 +11,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.herewhite.demo.R;
 
-import org.java_websocket.client.WebSocketClient;
-import org.java_websocket.enums.ReadyState;
-import org.java_websocket.handshake.ServerHandshake;
-
-import java.net.URI;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.WebSocket;
+import okhttp3.WebSocketListener;
+import okio.ByteString;
 
 public class WebSocketTestActivity extends AppCompatActivity {
     private static final String TAG = WebSocketTestActivity.class.getSimpleName();
@@ -26,8 +27,8 @@ public class WebSocketTestActivity extends AppCompatActivity {
     private Button close;
     private Button send;
 
-    WebSocketClient client;
-    private ReadyState readyState;
+    OkHttpClient client = new OkHttpClient.Builder().build();
+    private WebSocket realWebSocket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,44 +52,55 @@ public class WebSocketTestActivity extends AppCompatActivity {
     private void onSendMessage(View view) {
         String message = messageInput.getText().toString();
         if (!message.equals("")) {
-            if (client != null && readyState == ReadyState.OPEN) {
-                client.send(message);
+            if (realWebSocket != null) {
+                realWebSocket.send(message);
             }
         }
     }
 
     private void onClose(View view) {
-        if (client != null) {
-            client.close();
+        if (realWebSocket != null) {
+            realWebSocket.close(1000, "");
         }
     }
 
     private void onConnect(View view) {
         try {
-            client = new WebSocketClient(new URI("wss://echo.websocket.org")) {
+            Request request = new Request.Builder().url("wss://echo.websocket.org").build();
+            realWebSocket = client.newWebSocket(request, new WebSocketListener() {
                 @Override
-                public void onOpen(ServerHandshake handshakedata) {
-                    appendLog("onOpen handshakedata" + handshakedata);
-                    readyState = client.getReadyState();
+                public void onOpen(WebSocket webSocket, Response response) {
+                    appendLog("onOpen");
                 }
 
                 @Override
-                public void onMessage(String message) {
-                    appendLog("onMessage message " + message);
+                public void onMessage(WebSocket webSocket, String text) {
+                    appendLog("onMessage message " + text);
                 }
 
                 @Override
-                public void onClose(int code, String reason, boolean remote) {
+                public void onMessage(WebSocket webSocket, ByteString bytes) {
+                    super.onMessage(webSocket, bytes);
+                }
+
+                @Override
+                public void onClosing(WebSocket webSocket, int code, String reason) {
+                    super.onClosing(webSocket, code, reason);
+                }
+
+                @Override
+                public void onClosed(WebSocket webSocket, int code, String reason) {
                     appendLog("onClose reason " + reason);
-                    readyState = ReadyState.CLOSED;
                 }
 
                 @Override
-                public void onError(Exception ex) {
-                    appendLog("onError");
+                public void onFailure(WebSocket webSocket, Throwable t, Response response) {
+                    super.onFailure(webSocket, t, response);
+                    {
+                        appendLog("onError");
+                    }
                 }
-            };
-            client.connect();
+            });
         } catch (Exception e) {
             appendLog("onConnect Exception :" + e);
         }
