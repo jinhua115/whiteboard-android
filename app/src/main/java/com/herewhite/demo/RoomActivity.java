@@ -187,7 +187,7 @@ public class RoomActivity extends BaseActivity {
         // 设置全链路加速
         configuration.setFpaParams(new FpaParams(
                 "7e8224ffaec64a2dac57b5d3e25f3953",
-                "007eJxTYOjr4TnXeWMZ2xHrjj1v5HczpwtcWHF8QZmtxKpr22q0ytgVGMxTLYyMTNLSElOTzUwSjVISk03Nk0xTjFONTNOMLU2NpZ2uJjjUsTL81ixhZWZgBEMQH6gzxdzI2Mw0NcnSwtjEwtTY0jzVONU4zTLFxMwgKSUlkYvByMLCyNjE0MjcmAmuD1mUhYGBAQD8ISth",
+                "007eJxTYAgUu7zOMPjjVsZz/H4zgqyYeHVvzWUuUbwR+mZTkU2djL0Cg3mqhZGRSVpaYmqymUmiUUpisql5kmmKcaqRaZqxpalxiPbNBIc6VoaKV4tYmRkYwRDEB+pMMTcyNjNNTbK0MDaxMDW2NE81TjVOs0wxMTNISklJ5GIwsrAwMjYxNDI3YILrQxZlYWBgAACziCll",
                 370
         ));
 
