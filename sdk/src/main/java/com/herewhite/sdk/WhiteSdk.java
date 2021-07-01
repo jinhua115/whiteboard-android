@@ -2,6 +2,8 @@ package com.herewhite.sdk;
 
 import android.content.Context;
 
+import androidx.annotation.Nullable;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.herewhite.sdk.domain.FontFace;
@@ -15,10 +17,10 @@ import com.herewhite.sdk.internal.PlayerJsInterfaceImpl;
 import com.herewhite.sdk.internal.RoomJsInterfaceImpl;
 import com.herewhite.sdk.internal.RtcJsInterfaceImpl;
 import com.herewhite.sdk.internal.SdkJsInterfaceImpl;
+import com.herewhite.sdk.internal.WsJsInterfaceImpl;
 
 import org.json.JSONObject;
 
-import androidx.annotation.Nullable;
 import wendu.dsbridge.OnReturnValue;
 
 /**
@@ -137,6 +139,11 @@ public class WhiteSdk {
             rtcJsInterface = new RtcJsInterfaceImpl(audioMixerBridge);
             bridge.addJavascriptObject(rtcJsInterface, "rtc");
             whiteSdkConfiguration.setEnableRtcIntercept(true);
+        }
+
+        if (whiteSdkConfiguration.getFpaParams() != null) {
+            bridge.addJavascriptObject(new WsJsInterfaceImpl(bridge, whiteSdkConfiguration.getFpaParams()), "ws");
+            whiteSdkConfiguration.setFpa(true);
         }
 
         bridge.addJavascriptObject(this.sdkJsInterface, "sdk");

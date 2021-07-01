@@ -5,6 +5,7 @@ import android.os.Build.VERSION;
 
 import com.google.gson.annotations.SerializedName;
 import com.herewhite.sdk.domain.DeviceType;
+import com.herewhite.sdk.domain.FpaParams;
 import com.herewhite.sdk.domain.LoggerOptions;
 import com.herewhite.sdk.domain.Region;
 import com.herewhite.sdk.domain.WhiteObject;
@@ -139,6 +140,8 @@ public class WhiteSdkConfiguration extends WhiteObject {
      */
     private PptParams pptParams = new PptParams();
     private HashMap<String, String> fonts;
+    private boolean fpa;
+    private FpaParams fpaParams;
 
     /**
      * 获取是否启用 iframe 插件。
@@ -544,4 +547,16 @@ public class WhiteSdkConfiguration extends WhiteObject {
     }
 
     private boolean enableImgErrorCallback;
+
+    public FpaParams getFpaParams() {
+        return fpaParams;
+    }
+
+    public void setFpaParams(FpaParams fpaParams) {
+        this.fpaParams = fpaParams;
+    }
+
+    public void setFpa(boolean fpa) {
+        this.fpa = fpa;
+    }
 }
