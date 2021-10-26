@@ -141,9 +141,8 @@ public class WhiteSdk {
             whiteSdkConfiguration.setEnableRtcIntercept(true);
         }
 
-        if (whiteSdkConfiguration.getFpaParams() != null) {
-            bridge.addJavascriptObject(new WsJsInterfaceImpl(bridge, whiteSdkConfiguration.getFpaParams()), "ws");
-            whiteSdkConfiguration.setFpa(true);
+        if (whiteSdkConfiguration.isEnableFpa()) {
+            bridge.addJavascriptObject(new WsJsInterfaceImpl(bridge), "ws");
         }
 
         bridge.addJavascriptObject(this.sdkJsInterface, "sdk");

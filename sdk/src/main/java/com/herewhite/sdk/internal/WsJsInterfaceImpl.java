@@ -5,7 +5,6 @@ import static java.net.Proxy.Type.HTTP;
 import android.webkit.JavascriptInterface;
 
 import com.herewhite.sdk.JsBridgeInterface;
-import com.herewhite.sdk.domain.FpaParams;
 import com.herewhite.sdk.domain.WhiteObject;
 
 import org.json.JSONException;
@@ -34,7 +33,7 @@ public class WsJsInterfaceImpl {
     private OkHttpClient client;
     private WebSocket webSocket;
 
-    public WsJsInterfaceImpl(JsBridgeInterface bridge, FpaParams fpaParams) {
+    public WsJsInterfaceImpl(JsBridgeInterface bridge) {
         this.bridge = bridge;
         client = new OkHttpClient.Builder()
                 .readTimeout(300, TimeUnit.SECONDS)
@@ -69,14 +68,16 @@ public class WsJsInterfaceImpl {
     public void setup(Object args) {
         Logger.info("ws interface setup " + args.toString());
         if (args instanceof JSONObject) {
-            JSONObject jsonObject = (JSONObject) args;
             try {
+                JSONObject jsonObject = (JSONObject) args;
                 String url = jsonObject.getString("url");
                 int key = jsonObject.getInt("key");
                 webSocket = new WebSocketWrapper(url, key);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        } else {
+            Logger.error("ws send args error !!!", null);
         }
     }
 
@@ -84,8 +85,8 @@ public class WsJsInterfaceImpl {
     public void send(Object args) {
         Logger.info("ws interface send " + args.toString());
         if (args instanceof JSONObject) {
-            JSONObject jsonObject = (JSONObject) args;
             try {
+                JSONObject jsonObject = (JSONObject) args;
                 String type = jsonObject.getString("type");
                 String data = jsonObject.getString("data");
                 if (KEY_TYPE_BYTEBUTTER.equals(type)) {
@@ -99,6 +100,8 @@ public class WsJsInterfaceImpl {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+        } else {
+            Logger.error("ws send args error !!!", null);
         }
     }
 
@@ -153,7 +156,8 @@ public class WsJsInterfaceImpl {
 
                 @Override
                 public void onFailure(WebSocket webSocket, Throwable t, Response response) {
-                    notifyJsError(t.getMessage());
+                    notifyJsClosed(1006, "ws native onFailure called");
+                    // notifyJsError(t.getMessage());
                 }
             });
             this.key = key;

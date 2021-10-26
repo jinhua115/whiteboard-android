@@ -185,11 +185,7 @@ public class RoomActivity extends BaseActivity {
         //动态 ppt 需要的自定义字体，如果没有使用，无需调用
         configuration.setFonts(new MapBuilder<String, String>().put("宋体", "https://your-cdn.com/Songti.ttf").build());
         // 设置全链路加速
-        // configuration.setFpaParams(new FpaParams(
-        //         "7e8224ffaec64a2dac57b5d3e25f3953",
-        //         "007eJxTYAgUu7zOMPjjVsZz/H4zgqyYeHVvzWUuUbwR+mZTkU2djL0Cg3mqhZGRSVpaYmqymUmiUUpisql5kmmKcaqRaZqxpalxiPbNBIc6VoaKV4tYmRkYwRDEB+pMMTcyNjNNTbK0MDaxMDW2NE81TjVOs0wxMTNISklJ5GIwsrAwMjYxNDI3YILrQxZlYWBgAACziCll",
-        //         370
-        // ));
+        configuration.setEnableFpa(true);
 
         mWhiteSdk = new WhiteSdk(mWhiteboardView, this, configuration);
 
