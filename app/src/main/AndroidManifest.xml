@@ -4,6 +4,7 @@
     package="com.herewhite.demo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MainApplication"
@@ -42,7 +43,6 @@
         <activity
             android:name=".RoomActivity"
             android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="landscape"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
             android:name=".test.RatioChangeActivity"

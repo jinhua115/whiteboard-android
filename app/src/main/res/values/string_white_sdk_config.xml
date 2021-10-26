@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<!--    &lt;!&ndash; 配置sdk app 参数&ndash;&gt;-->
-<!--    <string name="sdk_app_id">"283/VGiScM9Wiw2HJg"</string>-->
-<!--    <string name="sdk_app_token">""</string>-->
-<!--    &lt;!&ndash; 配置有效room参数方便测试 &ndash;&gt;-->
-<!--    <string name="room_uuid">"1328f1d0bec411eb8b19c12fcd306398"</string>-->
-<!--    <string name="room_token">"NETLESSROOM_YWs9M2R5WmdQcFlLcFlTdlQ1ZjRkOFBiNjNnY1RoZ3BDSDlwQXk3Jm5vbmNlPTE2MjIxNzA5MzY2NDAwMCZyb2xlPTImc2lnPTRjMDY4NWNhNDBiYmNiYzdkYWIwMTU2Njc4ZmU1MjBmYWE3ZDE0Nzc0MmU0NmU0ZWY4YWM1YWE2ZmUwYzVlYTEmdXVpZD0xMzI4ZjFkMGJlYzQxMWViOGIxOWMxMmZjZDMwNjM5OA"</string>-->
     <string name="sdk_app_id">792/uaYcRG0I7ctP9A</string>
     <string name="sdk_app_token">WHITEcGFydG5lcl9pZD1OZ3pwQWNBdlhiemJERW9NY0E0Z0V3RTUwbVZxM0NIbDJYV0Ymc2lnPWNiZWExOTMwNzc1NmQyNmU3N2U3M2Q0NWZjNTZiOGIwMWE2ZjU4NDI6YWRtaW5JZD0yMTYmcm9sZT1hZG1pbiZleHBpcmVfdGltZT0xNTg5ODMzNTQxJmFrPU5nenBBY0F2WGJ6YkRFb01jQTRnRXdFNTBtVnEzQ0hsMlhXRiZjcmVhdGVfdGltZT0xNTU4Mjc2NTg5Jm5vbmNlPTE1NTgyNzY1ODg4NDQwMA</string>
-    <!-- h5 2 -->
-    <string name="room_uuid">cb752b80d32011eb9eacdb49da32df03</string>
-    <string name="room_token">"NETLESSROOM_YWs9M2R5WmdQcFlLcFlTdlQ1ZjRkOFBiNjNnY1RoZ3BDSDlwQXk3Jm5vbmNlPTE2MjQzNDIzMzgyMDEwMCZyb2xlPTAmc2lnPTk3NjdhZmZlMTYxZWY1M2Y3MzQxOGE3YjcxYjFmNjJmM2JhMzhjZjA4YjcyMzMyNGRlMmJlNzc3OWVlY2YwMWUmdXVpZD1jYjc1MmI4MGQzMjAxMWViOWVhY2RiNDlkYTMyZGYwMw"</string>
+    <!-- 配置有效room参数方便测试 -->
+    <string name="room_uuid">"216fd5c00ef011ec9fbc15c8ae17e799"</string>
+    <string name="room_token">"NETLESSROOM_YWs9eTBJOWsxeC1IVVo4VGh0NyZub25jZT0xNjMwOTE4NTIxMTI5MDAmcm9sZT0wJnNpZz03NWU5NjRmZjM1OGRlNjVlMjI0ZWE5MmQ4YzQwODc4NWIzZWIwZGQ0ZjgwMjFiNzI3ZTkwMTRjNzczZjFhZGZiJnV1aWQ9MjE2ZmQ1YzAwZWYwMTFlYzlmYmMxNWM4YWUxN2U3OTk"</string>
 </resources>

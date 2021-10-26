@@ -16,7 +16,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;
-import okio.ByteString;
 
 public class WebSocketTestActivity extends AppCompatActivity {
     private static final String TAG = WebSocketTestActivity.class.getSimpleName();
@@ -76,11 +75,6 @@ public class WebSocketTestActivity extends AppCompatActivity {
                 @Override
                 public void onMessage(WebSocket webSocket, String text) {
                     appendLog("onMessage message " + text);
-                }
-
-                @Override
-                public void onMessage(WebSocket webSocket, ByteString bytes) {
-                    super.onMessage(webSocket, bytes);
                 }
 
                 @Override

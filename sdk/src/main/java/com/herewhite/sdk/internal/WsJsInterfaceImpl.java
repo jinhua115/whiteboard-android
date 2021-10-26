@@ -1,16 +1,24 @@
 package com.herewhite.sdk.internal;
 
+import static java.net.Proxy.Type.HTTP;
+
 import android.webkit.JavascriptInterface;
 
 import com.herewhite.sdk.JsBridgeInterface;
 import com.herewhite.sdk.domain.FpaParams;
 import com.herewhite.sdk.domain.WhiteObject;
-import com.herewhite.sdk.rtns.RtnsSocketConf;
-import com.herewhite.sdk.rtns.RtnsSocketFactory;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import io.agora.fpaService.FpaConfig;
+import io.agora.fpaService.FpaService;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -28,10 +36,33 @@ public class WsJsInterfaceImpl {
 
     public WsJsInterfaceImpl(JsBridgeInterface bridge, FpaParams fpaParams) {
         this.bridge = bridge;
-        RtnsSocketConf conf = new RtnsSocketConf(fpaParams.getAppId(), fpaParams.getToken(), fpaParams.getChainId());
         client = new OkHttpClient.Builder()
-                .socketFactory(new RtnsSocketFactory(conf))
+                .readTimeout(300, TimeUnit.SECONDS)
+                .writeTimeout(300, TimeUnit.SECONDS)
+                .proxy(createProxy())
                 .build();
+    }
+
+    private Map<String, Integer> createChainIdTable() {
+        Map<String, Integer> chainIdTable = new HashMap<>();
+        chainIdTable.put("47.114.202.227:443", 284);
+        return chainIdTable;
+    }
+
+    private Proxy createProxy() {
+        Proxy result = null;
+        try {
+            FpaConfig config = new FpaConfig();
+            config.setAppId("7e8224ffaec64a2dac57b5d3e25f3953");
+            config.setToken("007eJxTYDCYc++byuuNkVdWVcWILZh+wTX4mo1zSc2kkJAdi2Mkd2xVYDBPtTAyMklLS0xNNjNJNEpJTDY1TzJNMU41Mk0ztjQ1vphRnuhQx8rQ07udmZmBEQxBfKDOFHMjYzPT1CRLC2MTC1NjS/NU41TjNMsUEzODpJSURC4GIwsLI2MTQyNzAya4PmRRFgYGBgDLsC0H");
+            config.setChainIdTable(createChainIdTable());
+
+            FpaService fpaService = FpaService.createFpaService(config);
+            result = new Proxy(HTTP, new InetSocketAddress("127.0.0.1", fpaService.getHttpProxyPort()));
+        } catch (Exception e) {
+            Logger.info("ws create fpa service error " + e.toString());
+        }
+        return result;
     }
 
     @JavascriptInterface
@@ -42,7 +73,6 @@ public class WsJsInterfaceImpl {
             try {
                 String url = jsonObject.getString("url");
                 int key = jsonObject.getInt("key");
-
                 webSocket = new WebSocketWrapper(url, key);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -89,7 +119,7 @@ public class WsJsInterfaceImpl {
         }
     }
 
-    class WebSocketWrapper implements WebSocket {
+    private class WebSocketWrapper implements WebSocket {
         private final int key;
         private WebSocket realWebSocket;
 
@@ -113,7 +143,7 @@ public class WsJsInterfaceImpl {
 
                 @Override
                 public void onClosing(WebSocket webSocket, int code, String reason) {
-
+                    // ignore
                 }
 
                 @Override
@@ -145,8 +175,8 @@ public class WsJsInterfaceImpl {
         }
 
         @Override
-        public boolean send(ByteString bytes) {
-            return realWebSocket.send(bytes);
+        public boolean send(ByteString byteString) {
+            return realWebSocket.send(byteString);
         }
 
         @Override
