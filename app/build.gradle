@@ -60,5 +60,5 @@ dependencies {
     androidTestImplementation "androidx.test:runner:${rootProject.testRunnerVersion}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${rootProject.espressoVersion}"
 
-    implementation "org.java-websocket:Java-WebSocket:1.5.1"
+    // implementation "org.java-websocket:Java-WebSocket:1.5.1"
 }

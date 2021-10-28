@@ -18,6 +18,8 @@ import java.util.concurrent.TimeUnit;
 
 import io.agora.fpaService.FpaConfig;
 import io.agora.fpaService.FpaService;
+import io.agora.fpaService.FpaServiceObserver;
+import io.agora.fpaService.LogUtil;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -28,23 +30,26 @@ import okio.ByteString;
 public class WsJsInterfaceImpl {
     private static final String KEY_TYPE_BYTEBUTTER = "arraybuffer";
     private static final String KEY_TYPE_STRING = "string";
+    private static OkHttpClient client;
 
     private JsBridgeInterface bridge;
-    private OkHttpClient client;
     private WebSocket webSocket;
 
     public WsJsInterfaceImpl(JsBridgeInterface bridge) {
         this.bridge = bridge;
-        client = new OkHttpClient.Builder()
-                .readTimeout(300, TimeUnit.SECONDS)
-                .writeTimeout(300, TimeUnit.SECONDS)
-                .proxy(createProxy())
-                .build();
+        LogUtil.DEBUG = true;
+        if (client == null) {
+            client = new OkHttpClient.Builder()
+                    .readTimeout(300, TimeUnit.SECONDS)
+                    .writeTimeout(300, TimeUnit.SECONDS)
+                    .proxy(createProxy())
+                    .build();
+        }
     }
 
     private Map<String, Integer> createChainIdTable() {
         Map<String, Integer> chainIdTable = new HashMap<>();
-        chainIdTable.put("47.114.202.227:443", 284);
+        chainIdTable.put("gateway.netless.link:443", 285);
         return chainIdTable;
     }
 
@@ -52,9 +57,11 @@ public class WsJsInterfaceImpl {
         Proxy result = null;
         try {
             FpaConfig config = new FpaConfig();
-            config.setAppId("7e8224ffaec64a2dac57b5d3e25f3953");
-            config.setToken("007eJxTYDCYc++byuuNkVdWVcWILZh+wTX4mo1zSc2kkJAdi2Mkd2xVYDBPtTAyMklLS0xNNjNJNEpJTDY1TzJNMU41Mk0ztjQ1vphRnuhQx8rQ07udmZmBEQxBfKDOFHMjYzPT1CRLC2MTC1NjS/NU41TjNMsUEzODpJSURC4GIwsLI2MTQyNzAya4PmRRFgYGBgDLsC0H");
+            config.setAppId("81ae40d666ed4fdc9b883962e9873a0b");
+            config.setToken("81ae40d666ed4fdc9b883962e9873a0b");
             config.setChainIdTable(createChainIdTable());
+            config.setLogLevel(1);
+            config.setLogFilePath("/sdcard/test.log");
 
             FpaService fpaService = FpaService.createFpaService(config);
             result = new Proxy(HTTP, new InetSocketAddress("127.0.0.1", fpaService.getHttpProxyPort()));
